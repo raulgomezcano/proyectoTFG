@@ -174,7 +174,8 @@ export class CitaTattooArtistaComponent {
           this.servicioGaleria.mostrarTatto().subscribe(
             (tatuajes: Tattoo[]) => {
               // Filtrar los tatuajes por nombre
-              const tattooFiltrado = tatuajes.filter(tatuaje => tatuaje.nombre == this.formularioCita.get('tatuaje')?.value);
+              const tattooFiltrado = tatuajes.filter(tatuaje => tatuaje.nombre ==
+                 this.formularioCita.get('tatuaje')?.value);
 
               // Verificar si se encontró un tatuaje
               if (tattooFiltrado.length > 0) {
@@ -184,13 +185,11 @@ export class CitaTattooArtistaComponent {
                 this.servicioGaleria.obtenerPorId(tatuajeSeleccionado.idTattoo).subscribe(
                   (tattooObtenido: Tattoo) => {
                     cita.tattoo = tattooObtenido; // Asignación de tattoo a la cita
-                    this.usuarioServicio.inicioSesion('Juan', '1234');
                     cita.usuarioCita = this.localStorage.usuarioLogeado();
                     cita.fecha = this.formularioCita.get('fecha_cita')?.value;
                     cita.turno = this.turno;
                     this.citaServicio.insert(cita).subscribe(data => {});
                     this.router.navigateByUrl('/detalle-cita');
-
                   }
                 );
               }

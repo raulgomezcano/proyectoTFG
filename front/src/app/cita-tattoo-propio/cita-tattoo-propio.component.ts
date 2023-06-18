@@ -141,7 +141,8 @@ export class CitaTattooPropioComponent {
 
     const cita = new Cita();
 
-    // Generar un número entero aleatorio entre 5 y 8 (ambos incluidos). Estos son los id de los tatuadores en BBDD
+    // Generar un número entero aleatorio entre 5 y 8 (ambos incluidos). 
+    // Estos son los id de los tatuadores en BBDD
     const IDartista = Math.floor(Math.random() * (8 - 5 + 1)) + 5;
     // Obtener los valores del artista desde el servicio
     this.artistaServicio.mostrarArtista().subscribe(
